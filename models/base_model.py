@@ -16,13 +16,19 @@ class BaseModel:
     Base class for the Airbnb clone
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         initialization of basemodel
         """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if (not (kwargs)):
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+        else:
+            dt = '%Y-%m-%dT%H:%M:%S.%f'
+            self.id = kwargs['id']
+            self.created_at = datetime.strptime(kwargs['created_at'], dt)
+            self.updated_at = datetime.strptime(kwargs['updated_at'], dt)
 
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__,
