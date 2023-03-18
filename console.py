@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     CLI class
     """
 
-    avail_class = ('BaseModel')
+    avail_class = ('BaseModel', 'User')
     prompt = '(hbnb) '
 
     def do_quit(self, line):
