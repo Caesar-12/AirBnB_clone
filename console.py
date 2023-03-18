@@ -87,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
     def do_all(self, line):
-        """all: displays all instance representaion"""
+        """all: displays all instances representaion"""
         comm = line.split()
         if comm[0] not in self.avail_class:
             print("** class doesn't exist **")
