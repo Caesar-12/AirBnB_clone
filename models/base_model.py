@@ -9,6 +9,7 @@ Contans BaseModel class for Airbnb Clone - The console
 from uuid import uuid4
 from datetime import datetime
 import models
+from models.user import User
 
 
 class BaseModel:
