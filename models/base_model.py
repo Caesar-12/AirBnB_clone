@@ -8,7 +8,7 @@ Contans BaseModel class for Airbnb Clone - The console
 
 from uuid import uuid4
 from datetime import datetime
-from .__init__ import storage
+import models
 
 
 class BaseModel:
@@ -25,7 +25,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
         else:
             dt = '%Y-%m-%dT%H:%M:%S.%f'
             self.id = kwargs['id']
@@ -38,7 +38,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         updated_dict = self.__dict__.copy()
