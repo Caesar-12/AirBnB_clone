@@ -33,9 +33,9 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         """Create: creates a new instance """
         if line not in self.avail_class:
-            print("** class name missing **")
-        elif len(line) == 0:
             print("** class doesn't exist **")
+        elif len(line) == 0:
+            print("** class name missing **")
         else:
             newObj = eval("{}()".format(line))
             newObj.save()
@@ -45,13 +45,13 @@ class HBNBCommand(cmd.Cmd):
         """show: prints string representation of an instance"""
         comm = line.split()
         if len(comm) == 0:
-            print("** class doesn't exist **")
+            print("** class name missing **")
             return False
         elif len(comm) < 2:
             print("** instance id missing **")
             return False
         elif comm[0] not in self.avail_class:
-            print("** class name missing **")
+            print("** class doesn't exist **")
             return False
 
         all_objs = storage.all()
@@ -68,10 +68,10 @@ class HBNBCommand(cmd.Cmd):
         comm = line.split()
 
         if len(comm) == 0:
-            print("** class doesn't exist **")
+            print("** class name missing **")
             return False
         elif comm[0] not in self.avail_class:
-            print("** class name missing **")
+            print("** class doesn't exist**")
             return False
         elif len(comm) < 2:
             print("** instance id missing **")
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """all: displays all instances representaion"""
         comm = line.split()
-        if comm[0] not in self.avail_class:
+        if len(comm) == 1 and comm[0] not in self.avail_class:
             print("** class doesn't exist **")
         all_objs = storage.all()
         obj_list = []
