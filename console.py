@@ -10,6 +10,11 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -132,9 +137,10 @@ class HBNBCommand(cmd.Cmd):
             try:
                 setattr(obj, comm[2], float(comm[3]))
                 storage.save()
-            except:
+            except ValueError:
                 setattr(obj, comm[2], str(comm[3]))
                 storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

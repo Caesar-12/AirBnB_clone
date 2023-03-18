@@ -10,6 +10,11 @@ import os
 from models.base_model import BaseModel
 import models
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -34,7 +39,6 @@ class FileStorage:
             for k, v in self.__objects.items():
                 # print("saved obj")
                 # print("v = ", v, "k= ", k, "\n")
-                #key = "{}.{}".format(v['__class__'], v['id'])
                 new[k] = v.to_dict()
             json.dump(new, f)
 
