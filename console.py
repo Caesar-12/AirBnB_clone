@@ -89,8 +89,9 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """all: displays all instances representaion"""
         comm = line.split()
-        if len(comm) == 1 and comm[0] not in self.avail_class:
+        if (len(comm) == 1) and (comm[0] not in self.avail_class):
             print("** class doesn't exist **")
+            return False
         all_objs = storage.all()
         obj_list = []
         for obj_id in all_objs.keys():
@@ -104,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         elif comm[0] not in self.avail_class:
-            print("** class name missing **")
+            print("** class doesn't exist **")
             return False
         elif len(comm) < 2:
             print("** instance id missing **")
